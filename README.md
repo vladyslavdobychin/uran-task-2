@@ -2,7 +2,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone [<repository_url>](https://github.com/vladyslavdobychin/uran-task-2.git)
+   git clone https://github.com/vladyslavdobychin/uran-task-2.git
    ```
 
 2. Navigate to the project directory:
