@@ -23,19 +23,22 @@
    php artisan key:generate
    ```
 
-5. For testing purposes the app is running on SQLite for simplicity, so no db setup required. 
+5. For testing purposes the app will be running on SQLite for simplicity
+   ```bash
+   touch database/database.sqlite
+   ``` 
 
-6. Run migrations and seed the database:
+7. Run migrations and seed the database:
    ```bash
    php artisan migrate:fresh --seed
    ```
 
-7. Start the development server:
+8. Start the development server:
    ```bash
    php artisan serve
    ```
 
-8. Open your browser and visit `http://localhost:8000`.
+9. Open your browser and visit `http://localhost:8000`.
 
 ## Default Login Credentials
 
