@@ -6,7 +6,7 @@ use App\Http\Controllers\ProductCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('products.index');
 });
 
 Route::get('/dashboard', function () {
@@ -18,7 +18,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Add your new routes for products and product categories here
     Route::resource('products', ProductController::class);
     Route::resource('product-categories', ProductCategoryController::class);
 });
