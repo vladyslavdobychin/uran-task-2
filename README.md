@@ -23,7 +23,7 @@
    php artisan key:generate
    ```
 
-5. Configure your database in the `.env` file.
+5. For testing purposes the app is running on SQLite for simplicity, so no db setup required. 
 
 6. Run migrations and seed the database:
    ```bash
