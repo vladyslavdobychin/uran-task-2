@@ -2,36 +2,30 @@
 
 @section('content')
     <div class="container mx-auto my-8 p-8 bg-white rounded-lg shadow-md">
-        <h1 class="text-3xl font-bold mb-6 text-center">Products</h1>
-        <a href="{{ route('products.create') }}" class="btn btn-primary mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Add New Product</a>
-        <table class="table-auto w-full mb-8">
-            <thead>
-            <tr class="bg-gray-200">
-                <th class="px-4 py-2">Name</th>
-                <th class="px-4 py-2">Description</th>
-                <th class="px-4 py-2">Price</th>
-                <th class="px-4 py-2">Category</th>
-                <th class="px-4 py-2">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($products as $product)
-                <tr class="border-b">
-                    <td class="px-4 py-2">{{ $product->name }}</td>
-                    <td class="px-4 py-2">{{ $product->description }}</td>
-                    <td class="px-4 py-2">{{ $product->price }}</td>
-                    <td class="px-4 py-2">{{ $product->category->name }}</td>
-                    <td class="px-4 py-2">
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning text-yellow-600">Edit</a>
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger text-red-600">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+        <h1 class="text-3xl font-bold mb-6 text-center">Create Product</h1>
+        <form action="{{ route('products.store') }}" method="POST" class="max-w-lg mx-auto">
+            @csrf
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" class="form-control mt-1 block w-full" id="name" name="name" required>
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea class="form-control mt-1 block w-full" id="description" name="description"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <input type="number" class="form-control mt-1 block w-full" id="price" name="price" step="0.01" required>
+            </div>
+            <div class="mb-4">
+                <label for="product_category_id" class="block text-sm font-medium text-gray-700">Category</label>
+                <select class="form-control mt-1 block w-full" id="product_category_id" name="product_category_id" required>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary bg-blue-500 text-white px-4 py-2 rounded">Create</button>
+        </form>
     </div>
 @endsection
